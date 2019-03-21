@@ -31,6 +31,23 @@ public class UserContact {
 		}
 		return input;
 	}	
+
+	public int askFieldValueInt(String fieldName) 
+	{	
+		int input = 0;
+		System.out.print("Please enter any integer value for the field "+fieldName+": ");
+		
+		input = scanner.nextInt();
+		return input;
+	}
 	
+	public boolean askFieldValueBool(String fieldName)
+	{
+		boolean input = true;
+		System.out.print("Please enter either true or false for the boolean field "+fieldName+": ");
+		
+		input = scanner.nextBoolean();
+		return input;
+	}
 	
 }
