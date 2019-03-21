@@ -26,9 +26,9 @@ public class ObjectCreator {
 				case 2 :
 					createAlien();
 					break;
-	//			case 3 :
-	//				createObjArrayPrim();
-	//				break;
+				case 3 :
+					createSpaceShip();
+					break;
 	//			case 4 : 
 	//				createObjArrayRef();
 	//				break;
@@ -40,19 +40,22 @@ public class ObjectCreator {
 		}
 	}
 	
-	// Create a Car object with user's specified field values, and adds to objects ArrayList
+	// Create a Planet object with user's specified field values, and add to objects HashMap
 	private int createPlanet() 
 	{
 		int thisObjID;
 		System.out.println("\nCREATING A PLANET OBJECT");
 		
+		//Set field values
 		int size = userContact.askFieldValueInt("size");
 		boolean lifeSustaining = userContact.askFieldValueBool("lifeSustaining");
 		
+		//Create object
 		Planet aPlanet = new Planet(size, lifeSustaining);
-		objects.put(workingID, aPlanet);
-		
+	
 		thisObjID = workingID;
+		objects.put(thisObjID, aPlanet);
+	
 		System.out.println("SUCCESSFULLY CREATED PLANET OBJECT! (OBJECT ID = " +thisObjID+")\n");
 		workingID++;
 		return thisObjID;
@@ -63,6 +66,7 @@ public class ObjectCreator {
 		int thisObjID;
 		System.out.println("\nCREATING AN ALIEN OBJECT");
 		
+		//Set field values
 		Object homePlanet = null;
 		int homePlanetID = userContact.askFieldValueRef("homePlanet");
 		if (homePlanetID > -1)
@@ -75,15 +79,36 @@ public class ObjectCreator {
 		if (favePlanetID > -1)
 			favePlanet = objects.get(homePlanetID);
 		else if (favePlanetID == -1)
-			favePlanet = objects.get(createAlien());
+			favePlanet = objects.get(createPlanet());
 		
+		//Create object
 		Alien anAlien = new Alien ((Planet)homePlanet, (Planet)favePlanet);
 		
-		objects.put(workingID, anAlien);
-		
 		thisObjID = workingID;
+		objects.put(thisObjID, anAlien);
+		
 		System.out.println("SUCCESSFULLY CREATED ALIEN OBJECT! (OBJECT ID = " +thisObjID+")\n");
 		workingID++;
 		return thisObjID;
+	}
+	
+	private int createSpaceShip()
+	{
+		int thisObjID;
+		System.out.println("\nCREATING A SPACESHIP OBJECT");
+	
+		//Set field values
+		int[] astronautIDs;
+		astronautIDs = userContact.askFieldValueArrayInts("astronautIDs", 5);
+		
+		//Create object
+		SpaceShip aSpaceShip = new SpaceShip(astronautIDs);
+		
+		thisObjID = workingID;
+		objects.put(thisObjID, aSpaceShip);
+		
+		System.out.println("SUCCESSFULLY CREATED SPACESHIP OBJECT! (OBJECT ID = " +thisObjID+")\n");
+		workingID++;
+		return thisObjID;	
 	}
 }

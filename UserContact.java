@@ -77,5 +77,21 @@ public class UserContact {
 		input = scanner.nextInt();
 		return input;
 	}
+	
+	public int[] askFieldValueArrayInts(String fieldName, int length)
+	{
+		int[] array = new int[length];
+		int input;
+
+		System.out.print("Please set " +length+" integer elements for the array value of the field, "+fieldName+"\n");
+		for (int i=0; i<length; i++)
+		{			
+			System.out.print("  Enter an int value for element "+i+": ");			
+			input = scanner.nextInt();
+			array[i] = input;
+		}
+		
+		return array;
+	}
 
 }
