@@ -2,7 +2,7 @@
  * This is the declaring class for an object created by the user, when they choose option 2:
  * to create an object which contains references to other objects.
  * 
- * This class contains references to other objects.
+ * This class contains references to Planet objects.
  *
  */
 

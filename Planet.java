@@ -2,7 +2,7 @@
  * This is the declaring class for an object created by the user, when they choose option 1:
  * to create an object which only has field with primitive values.
  * 
- * This class only has fields with primitive values.
+ * This class only has an int field and a boolean field.
  *
  */
 
