@@ -1,17 +1,16 @@
 /**
  * This is the declaring class for an object created by the user, when they choose option 3:
- * to create an object which contains an array if primitives.
+ * to create an object which contains an array of primitives.
  * 
- * This class contains references to other objects.
+ * This class contains an array of primitives.
  *
  */
 public class SpaceShip {
 
-	int[] astronautIDs;
+	int[] astronautIDs = new int[5];
 	
 	public SpaceShip(int[] astronautIDs)
 	{
 		this.astronautIDs = astronautIDs;
 	}
-	
 }

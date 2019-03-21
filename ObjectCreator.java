@@ -29,9 +29,9 @@ public class ObjectCreator {
 				case 3 :
 					createSpaceShip();
 					break;
-	//			case 4 : 
-	//				createObjArrayRef();
-	//				break;
+				case 4 : 
+					createSolarSystem();
+					break;
 	//			case 5 :
 	//				createObjColl();
 	//				break;
@@ -108,6 +108,37 @@ public class ObjectCreator {
 		objects.put(thisObjID, aSpaceShip);
 		
 		System.out.println("SUCCESSFULLY CREATED SPACESHIP OBJECT! (OBJECT ID = " +thisObjID+")\n");
+		workingID++;
+		return thisObjID;	
+	}
+	
+	private int createSolarSystem()
+	{
+		int thisObjID;
+		System.out.println("\nCREATING A SOLAR SYSTEM OBJECT");
+		
+		//Set field values
+		Planet[] planets = new Planet[4];
+		int objID;
+		System.out.println("Please set the 4 object reference elements for the array value of the field, planets.");
+		for (int i=0; i<4; i++)
+		{
+			System.out.println("Planet object for Element "+i);
+			objID = userContact.askFieldValueRef();
+			if (objID >-1)
+				planets[i] = (Planet)objects.get(objID);
+			else if (objID == -1)
+				planets[i] = (Planet)objects.get(createPlanet());
+			else
+				planets[i] = null;
+		}
+		
+		SolarSystem aSolarSystem = new SolarSystem(planets);
+		
+		thisObjID = workingID;
+		objects.put(thisObjID, aSolarSystem);
+		
+		System.out.println("SUCCESSFULLY CREATED SOLAR SYSTEM OBJECT! (OBJECT ID = " +thisObjID+")\n");
 		workingID++;
 		return thisObjID;	
 	}
