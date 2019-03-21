@@ -13,12 +13,12 @@ public class UserContact {
 		boolean goodInput = false;
 		int input = 0;
 		
-		System.out.print("PLEASE SPECIFY THE GENERAL TYPE OF OBJECT YOU WOULD LIKE TO CREATE. \n"
-					+ "Enter 1 for a simple object with only primitives for instance variables. \n"
-					+ "Enter 2 for an object that contains references to other objects. \n"
-					+ "Enter 3 for an object that contains an array of primitives. \n"
-					+ "Enter 4 for an object that contains an array of object references. \n"
-					+ "Enter 5 for an object that uses an instance of one of Java’s collection classes to refer to several other objects. \n"
+		System.out.print("\nPLEASE SPECIFY THE GENERAL TYPE OF OBJECT YOU WOULD LIKE TO CREATE. \n"
+					+ "  Enter 1 for a simple object with only primitives for instance variables. \n"
+					+ "  Enter 2 for an object that contains references to other objects. \n"
+					+ "  Enter 3 for an object that contains an array of primitives. \n"
+					+ "  Enter 4 for an object that contains an array of object references. \n"
+					+ "  Enter 5 for an object that uses an instance of one of Java’s collection classes to refer to several other objects. \n"
 					+ "Your selection: ");
 
 		while (!goodInput)
@@ -32,10 +32,25 @@ public class UserContact {
 		return input;
 	}	
 
+	public boolean askCreateAnother()
+	{
+		int input;
+		System.out.print("Do you want to create another object? \n"
+					+ "  Enter 1 if you do \n"
+					+ "  Enter 0 if you are finished \n"
+					+ "Your selection: ");
+		
+		input = scanner.nextInt();
+		if (input == 1)
+			return true;
+		else 
+			return false;
+	}
+	
 	public int askFieldValueInt(String fieldName) 
 	{	
 		int input = 0;
-		System.out.print("Please enter any integer value for the field "+fieldName+": ");
+		System.out.print("Please set the integer value for field, "+fieldName+". Enter any integer: ");
 		
 		input = scanner.nextInt();
 		return input;
@@ -43,11 +58,24 @@ public class UserContact {
 	
 	public boolean askFieldValueBool(String fieldName)
 	{
-		boolean input = true;
-		System.out.print("Please enter either true or false for the boolean field "+fieldName+": ");
+		boolean input;
+		System.out.print("Please set the boolean value for field, "+fieldName+". Enter either 'true' or 'false': ");
 		
 		input = scanner.nextBoolean();
 		return input;
 	}
 	
+	public int askFieldValueRef(String fieldName)
+	{
+		int input;
+		System.out.print("Please set the object value for the field "+fieldName+"\n"
+					+ "  Enter the ID number of another object if you know it, \n"
+					+ "  Enter -1 if you would like to create a new object for this field, \n"
+					+ "  Enter -2 if you would like to initialize this field value to null. \n"
+					+ "Your selection: ");
+		
+		input = scanner.nextInt();
+		return input;
+	}
+
 }
