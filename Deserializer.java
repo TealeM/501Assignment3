@@ -67,7 +67,7 @@ public class Deserializer {
 					//If the field contains a reference to another object
 					else if (valueElem.getName().contains("reference"))
 					{
-						if (valueElem.getText() != "null")
+						if (!valueElem.getText().contains("null"))
 						{
 							int refID = Integer.parseInt(valueElem.getText());
 							field.set(obj, objectTable.get(refID));
@@ -106,7 +106,7 @@ public class Deserializer {
 				//If the array elements are references to other objects
 				else
 				{
-					if (arrayElem.getText() != "null")
+					if (!arrayElem.getText().contains("null"))
 					{
 						int refID = Integer.parseInt(arrayElem.getText());
 						Array.set(obj, i, objectTable.get(refID));

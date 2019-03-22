@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserContact {
@@ -10,8 +11,8 @@ public class UserContact {
 	
 	public int askObjectType()
 	{
-		boolean goodInput = false;
 		int input = 0;
+		boolean goodInput = false;
 		
 		System.out.print("\nPLEASE SPECIFY THE GENERAL TYPE OF OBJECT YOU WOULD LIKE TO CREATE. \n"
 					+ "  Enter 1 for a simple object with only primitives for instance variables. \n"
@@ -34,13 +35,22 @@ public class UserContact {
 
 	public boolean askCreateAnother()
 	{
-		int input;
+		int input = -1;
+		boolean goodInput = false;
 		System.out.print("Do you want to create another object? \n"
 					+ "  Enter 1 if you do \n"
 					+ "  Enter 0 if you are finished \n"
 					+ "Your selection: ");
 		
-		input = scanner.nextInt();
+		while (!goodInput)
+		{	
+			input = scanner.nextInt();
+			if (input == 1 || input == 0)
+				goodInput = true;
+			else
+				System.out.print("\nYour selection was not valid! Please enter an integer according to the menu above. \nYour selection: ");
+		}
+		
 		if (input == 1)
 			return true;
 		else 
@@ -52,38 +62,65 @@ public class UserContact {
 		int input = 0;
 		System.out.print("Please set the integer value for field, "+fieldName+". Enter any integer: ");
 		
-		input = scanner.nextInt();
+		try {
+			input = scanner.nextInt();
+		}catch (InputMismatchException e) {
+			System.out.print("You must enter an integer or this field value. Exiting program now");
+			System.exit(0);
+		}
 		return input;
 	}
 	
 	public boolean askFieldValueBool(String fieldName)
 	{
-		boolean input;
+		boolean input = false;
 		System.out.print("Please set the boolean value for field, "+fieldName+". Enter either 'true' or 'false': ");
 		
-		input = scanner.nextBoolean();
+		try {
+			input = scanner.nextBoolean();
+		}catch (InputMismatchException e) {
+			System.out.print("You must enter an integer or this field value. Exiting program now");
+			System.exit(0);
+		}
 		return input;
 	}
 	
 	public int askFieldValueRef(String fieldName)
 	{
-		int input;
+		int input = -1;
+		boolean goodInput = false;
+		
 		System.out.print("Please set the object value for the field "+fieldName+".\n"
 					+ "  Enter 1 if you would like to create a new object for this field, \n"
 					+ "  Enter 0 if you would like to initialize this value to null. \n"
 					+ "Your selection: ");
 		
-		input = scanner.nextInt();
+		while (!goodInput)
+		{	
+			input = scanner.nextInt();
+			if (input == 1 || input == 0)
+				goodInput = true;
+			else
+				System.out.print("\nYour selection was not valid! Please enter an integer according to the menu above. \nYour selection: ");
+		}	
 		return input;
 	}
 	public int askFieldValueRef()
 	{
-		int input;
+		int input = -1;
+		boolean goodInput = false;
+		
 		System.out.print("  Enter 1 if you would like to create a new object for this field, \n"
 					+ "  Enter 0 if you would like to initialize this value to null. \n"
 					+ "Your selection: ");
-		
-		input = scanner.nextInt();
+		while (!goodInput)
+		{	
+			input = scanner.nextInt();
+			if (input == 1 || input == 0)
+				goodInput = true;
+			else
+				System.out.print("\nYour selection was not valid! Please enter an integer according to the menu above. \nYour selection: ");
+		}	
 		return input;
 	}
 	
