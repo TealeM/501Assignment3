@@ -31,19 +31,17 @@ public class Reciever {
 			xmlDoc = parser.build(in);
 			aDeserializer.deserialize(xmlDoc);
 			objects = aDeserializer.getObjects();
-			
-			System.out.println("SIZE OF OBJECTS: "+ objects.size());	//DEBUG
-			
-			//DEBUG
-			for(int i = 0; i<objects.size(); i++)
-			{
-				System.out.println("Element "+i+" of objects Vector: "+String.valueOf(objects.get(i).hashCode()));
-			}
-			
+						
 			//Visualizer
-			System.out.println("DOING VISUALIZER STUFF");	//DEBUG
+			System.out.println("\nVISUALIZING WHAT HAS BEEN DESERIALIZED.");
 			for (int i=0; i<objects.size(); i++)
-				anInspector.inspect(objects.get(i), false);
+			{
+				Object obj = objects.get(i);
+				try {
+					System.out.print("\nInspecting "+obj.getClass().getName()+" object (New ID: "+obj.hashCode()+")");
+				}catch(NullPointerException e) {System.out.println("\nInspecting Collections Class:");}
+				anInspector.inspect(obj, false);
+			}
 			
 			sock.close();
 			serverSock.close();

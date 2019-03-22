@@ -38,9 +38,9 @@ public class Sender {
 		
 		// Set up a connection to receiver, link output stream to socket
 		try {
-			ip = InetAddress.getLocalHost();
+			ip = InetAddress.getLocalHost();		//COMMENT THIS OUT FOR DEMO
 		
-//		InetAddress ip = InetAddress.getByName(<<hostname of receiving computer>>);		//FOR DEMO
+//			ip = InetAddress.getByName(<<hostname of receiving computer>>);		//USE THIS FOR DEMO
 			int port = 3000;
 			sock = new Socket(ip, port);
 

@@ -21,14 +21,9 @@ public class Inspector {
 	
 	public void inspect(Object obj, boolean recursive) throws IllegalArgumentException, IllegalAccessException, InstantiationException
     {
-		Class ObjClass = obj.getClass();
-	
-		System.out.println("\nInside inspector: " + obj + " (recursive = "+recursive+")");
-		
+		Class ObjClass = obj.getClass();		
 		getDetails(obj, ObjClass, recursive);
-		
-		System.out.print("\n\n------ FINISHED INSPECTING "+ObjClass.getName()+" ------");
-		
+				
 		objectsAlreadyInspected.addElement(ObjClass);
 		objectsAlreadyInspected.addElement(obj);
 		System.out.println();
@@ -203,13 +198,14 @@ public class Inspector {
 				///Else, if the value is an array
 				else if (f.getType().isArray())
 				{
+//					System.out.print("Array object reference ID: "+System.identityHashCode(f.get(obj)));
 					handleArray(f.get(obj));
 				}
 				///Else, if value is a non-array object
 				else
 				{
 					try {
-				 		System.out.print(f.get(obj) + ", Identity hash code: " + System.identityHashCode(f.get(obj))); 
+				 		System.out.print("Reference ID: " + System.identityHashCode(f.get(obj))); 
 						
 				 		// Further, if it's not null and recursion is set to true
 						if (rec == true && f.get(obj) != null) 
@@ -246,14 +242,18 @@ public class Inspector {
  		System.out.print("[");
  		for (int i =0; i<Array.getLength(arrayObj); i++)
  		{ 	
- 			// If the element is a non-array object
+ 			// If the element is null
  			if (Array.get(arrayObj, i) == null)
  				System.out.print(Array.get(arrayObj, i));
  			// If element is another array (multidimensional), recursively deal with it
  			else if (Array.get(arrayObj, i).getClass().isArray())
  				printArrayContents(Array.get(arrayObj, i));
- 			else
+ 			//If elements are primitives
+ 			else if (arrayObj.getClass().getComponentType().isPrimitive())
  				System.out.print(Array.get(arrayObj, i));
+ 			//If element is a non-array object
+ 			else
+ 				System.out.print("ID: "+System.identityHashCode(Array.get(arrayObj, i)));
  			
  			if (i < (Array.getLength(arrayObj))-1)
 				System.out.print(", ");
