@@ -13,7 +13,12 @@ public class ObjectCreator {
 		workingID = 0;
 	}
 	
-	public void createObj()
+	public HashMap<Integer, Object> getObjects()
+	{
+		return objects;
+	}
+	
+	public void createObjs()
 	{
 		boolean createAnother = true;
 		while (createAnother) {
