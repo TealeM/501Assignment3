@@ -12,6 +12,8 @@ public class Planet {
 	int size;
 	boolean lifeSustaining;
 	
+	public Planet () {}
+	
 	public Planet (int size, boolean lifeSustaining)
 	{
 		this.size = size;

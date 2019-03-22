@@ -8,6 +8,8 @@
 public class SolarSystem {
 	Planet[] planets = new Planet[4];
 	
+	public SolarSystem () {}
+	
 	public SolarSystem(Planet[] planets)
 	{
 		this.planets = planets;

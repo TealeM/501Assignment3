@@ -9,6 +9,8 @@ public class SpaceShip {
 
 	int[] astronautIDs = new int[5];
 	
+	public SpaceShip () {}
+	
 	public SpaceShip(int[] astronautIDs)
 	{
 		this.astronautIDs = astronautIDs;

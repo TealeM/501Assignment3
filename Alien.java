@@ -11,6 +11,8 @@ public class Alien {
 	Planet homePlanet;
 	Planet favePlanet;
 	
+	public Alien () {}
+	
 	public Alien (Planet homePlanet, Planet favePlanet)
 	{
 		this.homePlanet = homePlanet;

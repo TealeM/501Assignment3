@@ -12,6 +12,8 @@ public class Universe {
 
 	LinkedList<Planet> planetsWithLife;
 	
+	public Universe () {}
+	
 	public Universe (LinkedList<Planet> planetsWithLife)
 	{
 		this.planetsWithLife = planetsWithLife;
