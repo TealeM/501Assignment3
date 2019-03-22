@@ -69,9 +69,8 @@ public class UserContact {
 	{
 		int input;
 		System.out.print("Please set the object value for the field "+fieldName+".\n"
-					+ "  Enter the ID number of another object if you know it, \n"
-					+ "  Enter -1 if you would like to create a new object for this field, \n"
-					+ "  Enter -2 if you would like to initialize this field value to null. \n"
+					+ "  Enter 1 if you would like to create a new object for this field, \n"
+					+ "  Enter 0 if you would like to initialize this value to null. \n"
 					+ "Your selection: ");
 		
 		input = scanner.nextInt();
@@ -80,9 +79,8 @@ public class UserContact {
 	public int askFieldValueRef()
 	{
 		int input;
-		System.out.print("  Enter the ID number of another object if you know it, \n"
-					+ "  Enter -1 if you would like to create a new object for this field, \n"
-					+ "  Enter -2 if you would like to initialize this field value to null. \n"
+		System.out.print("  Enter 1 if you would like to create a new object for this field, \n"
+					+ "  Enter 0 if you would like to initialize this value to null. \n"
 					+ "Your selection: ");
 		
 		input = scanner.nextInt();

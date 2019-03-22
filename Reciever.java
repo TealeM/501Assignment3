@@ -27,16 +27,13 @@ public class Reciever {
 		
 		try {
 		xmlDoc = parser.build(in);
-		
-		System.out.println("YOUR XML DOC LOOKS LIKE:" +xmlDoc.toString());
-		
+
 		}catch(Exception e) {e.printStackTrace();}
 		
 		try {
 			sock.close();
 			serverSock.close();
 		}catch(Exception e) {e.printStackTrace();}
-		
 	}
 
 }
