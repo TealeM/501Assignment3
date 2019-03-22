@@ -139,7 +139,7 @@ public class ObjectCreator {
 		int objID;
 		System.out.println("Please set the 5 object reference elements for the Linked List, planetsWithLife.");
 		
-		for (int i=0; i<planetsWithLife.size(); i++)
+		for (int i=0; i<5; i++)
 		{
 			System.out.println("Planet object for next List Element: ");
 			int elementField = userContact.askFieldValueRef();

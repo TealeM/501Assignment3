@@ -22,12 +22,13 @@ public class Serializer {
 		
 		for (int i=0; i < objects.size(); i++) 
 		{
+			
 			Object object = objects.get(i);
 			Element elemObj;
-			if(!object.getClass().isArray())
-				elemObj = serializeObject(object);
-			else
+			if(object.getClass().isArray())
 				elemObj = serializeObjectArray(object);
+			else
+				elemObj = serializeObject(object);
 			
 			xmlDoc.getRootElement().addContent(elemObj);
 		}
@@ -36,7 +37,11 @@ public class Serializer {
 	}
 	
 	private Element serializeObject(Object object) throws Exception
-	{
+	{		
+		boolean isColl = checkIfColl(object);
+		if (isColl)
+			System.out.println("FOUND AN OBJECT THAT USES A COLLECTIONS CLASS");
+		
 		int objID = object.hashCode();
 		Class objClass = object.getClass();
 		
@@ -58,6 +63,19 @@ public class Serializer {
 
 		alreadySerialized.add(objID);
 		return elem;
+	}
+	private boolean checkIfColl(Object object)
+	{
+		boolean isColl = false;
+		for (int i=0; i<object.getClass().getInterfaces().length; i++)
+		{
+			String interfaceName = object.getClass().getInterfaces()[i].getClass().getName();
+			if(interfaceName.contains("Collections") || interfaceName.contains("List") || interfaceName.contains("Deque"))
+			{
+				isColl = true;
+			}
+		}
+		return isColl;
 	}
 	
 	private Element serializeObjectArray(Object object)
